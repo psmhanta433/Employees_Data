@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Employee Details</title>
+    </head>
+    <body>
+        <div id="table-container"></div>
+        <table id="employeeTable">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Designation</th>
+                    <th>Date of Joining</th>
+                    <!-- <th>Address</th>
+                    <th>Salary</th> -->
+                </tr>
+            </thead>
+            <tbody id="employeeData">
+                
+            </tbody>  
+        </table>
+        <script>
+            const employees=[{name:"Prashant Mhanta",designation:"Technical Writer", joiningDate:"2023-01-01",salary:600000}];
+
+            function filterAndEmployees(){
+                const filteremployees=employees.filter(employee => employees.designation ==="Technical Writer" || (employees.salary>500000 && employees.salary<700000));
+
+                const tableBody = document.getElementById("employeeData").innerHTML='';
+
+                filteredEmployees.forEach(element => {
+                    
+                        const row=document.createElement("tr");
+                        row.innerHTML='<td>$(employees.name)</td><td>$(employees.designation)</td><td>$(employees.joiningDate)</td>';
+                        tableBody.appendChild(row);
+                    
+                });
+            }
+
+            filterAndEmployees();
+        </script>
+        
+    </body>
+</html>
