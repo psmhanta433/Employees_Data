@@ -1,45 +1,56 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Employee Details</title>
-    </head>
-    <body>
-        <div id="table-container"></div>
-        <table id="employeeTable">
-            <thead>
-                <tr>
-                    <th>Employee Name</th>
-                    <th>Designation</th>
-                    <th>Date of Joining</th>
-                    <!-- <th>Address</th>
-                    <th>Salary</th> -->
-                </tr>
-            </thead>
-            <tbody id="employeeData">
-                
-            </tbody>  
-        </table>
-        <script>
-            const employees=[{name:"Prashant Mhanta",designation:"Technical Writer", joiningDate:"2023-01-01",salary:600000}];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <table id="employeeTable">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Designation</th>
+        <th>Date of Joining</th>
+      </tr>
+    </thead>
+    <tbody id="employeeData">
+      <!-- Employee details will be dynamically added here -->
+    </tbody>
+  </table>
 
-            function filterAndEmployees(){
-                const filteremployees=employees.filter(employee => employees.designation ==="Technical Writer" || (employees.salary>500000 && employees.salary<700000));
+  <script>
+    // Sample employee data (replace this with your actual data)
+    const employees = [
+      { name: "John Doe", designation: "Technical Writer", joiningDate: "2022-01-01", salary: 600000 },
+      { name: "Prashant Mhanta", designation: "Writer", joiningDate: "2022-01-01", salary: 600000 },
+      // Add more employee data here...
+    ];
 
-                const tableBody = document.getElementById("employeeData").innerHTML='';
+    // Function to filter employees based on criteria and generate table rows
+    function filterAndDisplay() {
+      const filteredEmployees = employees.filter(employee => 
+        employee.designation === "Technical Writer" && 
+        (employee.salary > 500000 && employee.salary < 700000)
+      );
 
-                filteredEmployees.forEach(element => {
-                    
-                        const row=document.createElement("tr");
-                        row.innerHTML='<td>$(employees.name)</td><td>$(employees.designation)</td><td>$(employees.joiningDate)</td>';
-                        tableBody.appendChild(row);
-                    
-                });
-            }
+      const tableBody = document.getElementById('employeeData');
+      tableBody.innerHTML = '';
 
-            filterAndEmployees();
-        </script>
-        
-    </body>
+      filteredEmployees.forEach(employee => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${employee.name}</td>
+          <td>${employee.designation}</td>
+          <td>${employee.joiningDate}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Call the function to initially display the data
+    filterAndDisplay();
+  </script>
+</body>
 </html>
